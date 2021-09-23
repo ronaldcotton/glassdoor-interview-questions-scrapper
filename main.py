@@ -97,10 +97,10 @@ if __name__ == "__main__":
         args['num'] = num_of_pages
 
     scraping_page = args['url']
-    for i in range(1,args['num']+1):
+    for i in range(10,args['num']+1):
         if i > 1:
             scraping_page = args['url'][:len(args['url'])-4] + f'_P{i}.htm'
-        print(f'Scraping Page: {i} of {args["num"]}')
+        print(f'Scraping Page: {i} of {args["num"]} - {scraping_page}')
         gd = load_site(scraping_page)
         title = convert_list_webelement(gd.find_elements_by_class_name('css-5j5djr')[-11:-1])
         interview_application = convert_list_webelement(gd.find_elements_by_css_selector("p.mt-xsm.mb-std"))
@@ -132,11 +132,11 @@ if __name__ == "__main__":
         lst_dct = []
         dct = {}
         for i in range(10):
-            dct['date'] = date[i].encode('utf-8')
-            dct['title'] = title[i].encode('utf-8')
-            dct['application'] = application[i].encode('utf-8')
-            dct['interview'] = interview[i].encode('utf-8')
-            dct['interview_question'] = interview_questions[i].encode('utf-8')
+            dct['date'] = date[i]
+            dct['title'] = title[i]
+            dct['application'] = application[i]
+            dct['interview'] = interview[i]
+            dct['interview_question'] = interview_questions[i]
             lst_dct.append(dct)
             dct = {}
         
