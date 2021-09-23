@@ -48,11 +48,11 @@ def program_args():
 
 
 def convert_list_webelement(lst):
-    return [l.text.replace('\'','').replace('"','') for l in lst] # remove quotes for "good" strings
+    return [l.text.replace('"','\'') for l in lst] # convert all quotes to single quote, double quote for csv
 
 
 def csv_header(filename):
-    with open(filename, 'w') as csvfile:
+    with open(filename, 'w', encoding='utf-8') as csvfile:
         col_names = ['date', 'title', 'application', 'interview', 'interview_question']
         last_col = len(col_names)-1
         for i,f in enumerate(col_names):
@@ -63,7 +63,7 @@ def csv_header(filename):
         csvfile.write('\n')
 
 def dict_to_csv(filename, lst_dct):
-    with open(filename, 'a') as csvfile:
+    with open(filename, 'a', encoding='utf-8') as csvfile:
         for dct in lst_dct:
             for k,v in dct.items():
                 csvfile.write(f'"{v}",') # fix later...
@@ -132,11 +132,11 @@ if __name__ == "__main__":
         lst_dct = []
         dct = {}
         for i in range(10):
-            dct['date'] = date[i]
-            dct['title'] = title[i]
-            dct['application'] = application[i]
-            dct['interview'] = interview[i]
-            dct['interview_question'] = interview_questions[i]
+            dct['date'] = date[i].encode('utf-8')
+            dct['title'] = title[i].encode('utf-8')
+            dct['application'] = application[i].encode('utf-8')
+            dct['interview'] = interview[i].encode('utf-8')
+            dct['interview_question'] = interview_questions[i].encode('utf-8')
             lst_dct.append(dct)
             dct = {}
         
