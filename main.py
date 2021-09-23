@@ -97,7 +97,7 @@ if __name__ == "__main__":
         args['num'] = num_of_pages
 
     scraping_page = args['url']
-    for i in range(1,args['num']+1):
+    for i in range(15,args['num']+1):
         if i > 1:
             scraping_page = args['url'][:len(args['url'])-4] + f'_P{i}.htm'
         print(f'Scraping Page: {i} of {args["num"]} - {scraping_page}')
@@ -132,11 +132,26 @@ if __name__ == "__main__":
         lst_dct = []
         dct = {}
         for i in range(10):
-            dct['date'] = date[i]
-            dct['title'] = title[i]
-            dct['application'] = application[i]
-            dct['interview'] = interview[i]
-            dct['interview_question'] = interview_questions[i]
+            try:
+                dct['date'] = date[i]
+            except:
+                dct['date'] = 'ERROR'
+            try:
+                dct['title'] = title[i]
+            except:
+                dct['title'] = 'ERROR'
+            try:
+                dct['application'] = application[i]
+            except:
+                dct['application'] = 'ERROR'
+            try:
+                dct['interview'] = interview[i]
+            except:
+                dct['interview'] =  'ERROR'
+            try:
+                dct['interview_question'] = interview_questions[i]
+            except:
+                dct['interview'] =  'ERROR'
             lst_dct.append(dct)
             dct = {}
         
