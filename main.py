@@ -97,7 +97,7 @@ if __name__ == "__main__":
         args['num'] = num_of_pages
 
     scraping_page = args['url']
-    for i in range(10,args['num']+1):
+    for i in range(1,args['num']+1):
         if i > 1:
             scraping_page = args['url'][:len(args['url'])-4] + f'_P{i}.htm'
         print(f'Scraping Page: {i} of {args["num"]} - {scraping_page}')
