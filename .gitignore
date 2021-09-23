@@ -1,4 +1,4 @@
 chromedriver
 chromedriver.exe
-./venv
+venv/
 *.csv

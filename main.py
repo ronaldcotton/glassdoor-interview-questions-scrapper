@@ -21,7 +21,10 @@ def load_site(u):
     options.add_argument("--silent")
     options.headless = True
     options.add_argument("--no-sandbox")
+    options.add_argument("--disable-gpu")
     options.add_argument("--log-level=3")
+    #options.add_argument('--headless') 
+    options.add_argument('--disable-software-rasterizer')
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     options.add_experimental_option('excludeSwitches', ['enable-automation'])
     options.add_argument(f'user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36')
@@ -97,7 +100,7 @@ if __name__ == "__main__":
         args['num'] = num_of_pages
 
     scraping_page = args['url']
-    for i in range(15,args['num']+1):
+    for i in range(1,args['num']+1):
         if i > 1:
             scraping_page = args['url'][:len(args['url'])-4] + f'_P{i}.htm'
         print(f'Scraping Page: {i} of {args["num"]} - {scraping_page}')
