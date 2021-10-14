@@ -102,7 +102,10 @@ if __name__ == "__main__":
     scraping_page = args['url']
     for i in range(1,args['num']+1):
         if i > 1:
-            scraping_page = args['url'][:len(args['url'])-4] + f'_P{i}.htm'
+            if ',' not in args['url']:
+                scraping_page = args['url'][:len(args['url'])-4] + f'_P{i}.htm'
+            else:
+                scraping_page = args['url'][:len(args['url'])-4] + f'_IP{i}.htm'
         print(f'Scraping Page: {i} of {args["num"]} - {scraping_page}')
         gd = load_site(scraping_page)
         title = convert_list_webelement(gd.find_elements_by_class_name('css-5j5djr')[-11:-1])
